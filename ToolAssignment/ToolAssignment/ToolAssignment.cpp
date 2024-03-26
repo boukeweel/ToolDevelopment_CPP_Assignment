@@ -6,40 +6,7 @@
 #include <iostream>
 #include <nlohmann/json.hpp>
 
-void JsonToObj(const nlohmann::json& jsonData, const std::string& filename)
-{
-	//this code does not work but it generates a obj file soooooo its something
-
-
-	std::ofstream outputFile(filename);
-	if (!outputFile.is_open()) {
-		std::cerr << "Error: Unable to open output file " << filename << std::endl;
-		return;
-	}
-
-
-	int vertexIndex = 1;
-	for (const auto& layer : jsonData) {
-		outputFile << "# Layer: " << layer["layer"] << std::endl;
-		for (const auto& position : layer["positions"]) {
-			outputFile << "v " << position[0] << " " << position[1] << " " << position[2] << std::endl;
-			++vertexIndex;
-		}
-	}
-
-	// Write faces (assuming each group of vertices forms a quad)
-	int numVerticesPerLayer = vertexIndex - 1;
-	int faceIndex = 1;
-	for (int i = 0; i < jsonData.size(); ++i) {
-		outputFile << "# Faces for Layer: " << jsonData[i]["layer"] << std::endl;
-		for (int j = 0; j < jsonData[i]["positions"].size() - 1; j += 2) {
-			outputFile << "f ";
-			outputFile << faceIndex << " " << faceIndex + 1 << " " << faceIndex + numVerticesPerLayer + 1 << " " << faceIndex + numVerticesPerLayer << std::endl;
-			faceIndex++;
-		}
-		faceIndex++; // Skip to next quad
-	}
-}
+#include "JsonToObjConverter.h"
 
 int main(int argc, char* argv[])
 {
@@ -73,7 +40,14 @@ int main(int argc, char* argv[])
 	//do something with to output the file
 	std::string fullOutputPath = outputPath + "/" + outputFilename + ".obj";
 
-	JsonToObj(jsonData, fullOutputPath);
+	std::ofstream outputFile(fullOutputPath);
+	if (!outputFile.is_open()) {
+		std::cerr << "Error: Unable to open output file " << fullOutputPath << std::endl;
+		return;
+	}
+
+	JsonToObjConverter converter;
+	converter.JsonToObj(jsonData, outputFile);
 
 	return 0;
 }

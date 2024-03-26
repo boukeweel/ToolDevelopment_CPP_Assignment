@@ -24,4 +24,5 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(json)
 
 # Include sub-projects.
+add_subdirectory("JsonToObjConverter")
 add_subdirectory ("ToolAssignment")
