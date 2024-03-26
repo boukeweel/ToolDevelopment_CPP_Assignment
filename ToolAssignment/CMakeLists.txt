@@ -11,5 +11,17 @@ endif()
 
 project ("ToolAssignment")
 
+include(FetchContent)
+Set(FETCHCONTENT_QUIET FALSE)
+FetchContent_Declare(
+	json
+	GIT_REPOSITORY "https://github.com/nlohmann/json.git"
+	GIT_TAG v3.11.3 #version
+	GIT_PROGRESS TRUE
+	GIT_SHALLOW TRUE
+)
+
+FetchContent_MakeAvailable(json)
+
 # Include sub-projects.
 add_subdirectory ("ToolAssignment")
