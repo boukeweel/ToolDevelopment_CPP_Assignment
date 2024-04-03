@@ -9,7 +9,7 @@ if (POLICY CMP0141)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
-project ("ToolAssignment")
+project ("JsonToObjConverter")
 
 include(FetchContent)
 Set(FETCHCONTENT_QUIET FALSE)
@@ -20,9 +20,7 @@ FetchContent_Declare(
 	GIT_PROGRESS TRUE
 	GIT_SHALLOW TRUE
 )
-
 FetchContent_MakeAvailable(json)
-
 # Include sub-projects.
-add_subdirectory("JsonToObjConverter")
-add_subdirectory ("ToolAssignment")
+add_subdirectory ("JsonToObjConverterCmd")
+add_subdirectory("JsonToObjLib")
