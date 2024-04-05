@@ -23,14 +23,14 @@ class JsonToObjLib
 
     //these 2 I got from julian
     const std::vector<vec3> CUBE_BASE_VERTICES{
-        { 0.5f,  0.5f, -0.5f},
+        { 0.5f,  -0.5f, 0.5f},
         { 0.5f, -0.5f, -0.5f},
         { 0.5f,  0.5f,  0.5f},
-        { 0.5f, -0.5f,  0.5f},
-        {-0.5f,  0.5f, -0.5f},
+        { 0.5f, 0.5f,  -0.5f},
+        {-0.5f,  -0.5f, 0.5f},
         {-0.5f, -0.5f, -0.5f},
         {-0.5f,  0.5f,  0.5f},
-        {-0.5f, -0.5f,  0.5f}
+        {-0.5f, 0.5f,  -0.5f}
     };
 
     const std::vector<Ivec4> CUBE_BASE_FACES{
