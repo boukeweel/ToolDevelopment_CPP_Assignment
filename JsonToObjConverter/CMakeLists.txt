@@ -2,7 +2,7 @@
 
 project ("JsonToObjConverter" LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 20)
+
 
 include(FetchContent)
 Set(FETCHCONTENT_QUIET FALSE)
@@ -17,5 +17,5 @@ FetchContent_MakeAvailable(json)
 # Include sub-projects.
 add_subdirectory ("JsonToObjConverterCmd")
 add_subdirectory("JsonToObjLib")
-#add_subdirectory("jsonToObjForm")
+add_subdirectory("jsonToObjForm")
 
