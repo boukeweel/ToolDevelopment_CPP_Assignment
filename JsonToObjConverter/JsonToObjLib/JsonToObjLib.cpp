@@ -17,8 +17,10 @@ nlohmann::json JsonToObjLib::ParseJsonData(std::ifstream& jsonFile)
 	return jsonData;
 }
 
-void JsonToObjLib::CreateObj(const nlohmann::json& jsonData, std::ofstream& outFile)
+void JsonToObjLib::CreateObj(std::ifstream& jsonFile, std::ofstream& outFile)
 {
+
+	const nlohmann::json jsonData = ParseJsonData(jsonFile);
 
 	//this code is made with julian's code on the side as a refrence
 	//this is becuase I never worked with obj file's before and was not aware how to create one, that worked

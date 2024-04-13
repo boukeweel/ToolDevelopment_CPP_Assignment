@@ -2,6 +2,10 @@
 #define JSONTOOBJFORM_H
 
 #include <QMainWindow>
+#include <QFileDialog>
+#include <QTableWidget>
+#include <QTableWidgetItem>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +21,16 @@ public:
     JsonToObjForm(QWidget *parent = nullptr);
     ~JsonToObjForm();
 
+private slots:
+    void OpenJsonFile();
+    void OpenObjFilePath();
+    void Cancel();
+    void Ok();
+
 private:
     Ui::JsonToObjForm *ui;
+    QString jsonFilePath;
+    QString OutObjPath;
+    QString ObjName;
 };
 #endif // JSONTOOBJFORM_H

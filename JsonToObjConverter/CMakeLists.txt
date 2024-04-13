@@ -2,8 +2,6 @@
 
 project ("JsonToObjConverter" LANGUAGES CXX)
 
-
-
 include(FetchContent)
 Set(FETCHCONTENT_QUIET FALSE)
 FetchContent_Declare(
@@ -14,6 +12,8 @@ FetchContent_Declare(
 	GIT_SHALLOW TRUE
 )
 FetchContent_MakeAvailable(json)
+
+
 # Include sub-projects.
 add_subdirectory ("JsonToObjConverterCmd")
 add_subdirectory("JsonToObjLib")

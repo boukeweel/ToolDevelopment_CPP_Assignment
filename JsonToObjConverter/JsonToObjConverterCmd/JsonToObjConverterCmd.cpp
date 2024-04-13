@@ -2,7 +2,6 @@
 //
 #include <fstream>
 #include <iostream>
-#include "nlohmann/json.hpp"
 #include "JsonToObjLib.h"
 
 
@@ -33,9 +32,6 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	nlohmann::json jsonData{ lib.ParseJsonData(jsonFile) };
-	jsonFile.close();
-
 	std::string fullOutputPath = outputPath + "/" + outputFilename + ".obj";
 
 	std::ofstream outputFile(fullOutputPath);
@@ -44,10 +40,11 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	lib.CreateObj(jsonData, outputFile);
+	lib.CreateObj(jsonFile, outputFile);
+	jsonFile.close();
+	outputFile.close();
 	
 	std::cout << "Created the obj " << outputFilename << " in file path " << outputPath << "\n";
-	
-	outputFile.close();
+
 	return 0;
 }

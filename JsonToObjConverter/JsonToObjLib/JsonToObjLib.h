@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+#include <vector>
 #include <nlohmann/json.hpp>
 
 
@@ -46,7 +48,7 @@ public:
 	~JsonToObjLib() = default;
 
 	nlohmann::json ParseJsonData(std::ifstream& jsonFile);
-    void CreateObj(const nlohmann::json& jsonData, std::ofstream& outFile);
+    void CreateObj(std::ifstream& jsonFile, std::ofstream& outFile);
 
 	bool isJSONFile(std::string& fileName);
 };
