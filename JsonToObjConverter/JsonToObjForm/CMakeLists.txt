@@ -33,7 +33,7 @@ target_link_libraries(JsonToObjForm PUBLIC
 
 target_link_libraries(JsonToObjForm PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
-#target_link_libraries(JsonToObjForm PRIVATE JsonToObjLib)
+target_link_libraries(JsonToObjForm PRIVATE JsonToObjLib)
 
 
 #install(TARGETS ObjViewerForm DESTINATION bin)

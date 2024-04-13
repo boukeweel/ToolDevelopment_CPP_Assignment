@@ -31,7 +31,6 @@ int main(int argc, char* argv[])
 		std::cerr << "Error: Unable to open file " << fileName << "\n";
 		return 1;
 	}
-
 	std::string fullOutputPath = outputPath + "/" + outputFilename + ".obj";
 
 	std::ofstream outputFile(fullOutputPath);
@@ -45,6 +44,7 @@ int main(int argc, char* argv[])
 	outputFile.close();
 	
 	std::cout << "Created the obj " << outputFilename << " in file path " << outputPath << "\n";
-
+	
+	
 	return 0;
 }

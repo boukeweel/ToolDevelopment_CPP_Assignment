@@ -13,9 +13,8 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(json)
 
-
 # Include sub-projects.
 add_subdirectory ("JsonToObjConverterCmd")
 add_subdirectory("JsonToObjLib")
-add_subdirectory("jsonToObjForm")
+#add_subdirectory("jsonToObjForm")
 

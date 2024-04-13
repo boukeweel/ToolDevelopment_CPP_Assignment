@@ -1,5 +1,11 @@
 #include "jsontoobjform.h"
+
+#include <iostream>
+
 #include "./ui_jsontoobjform.h"
+#include "fstream"
+
+#include "JsonToObjLib.h"
 
 JsonToObjForm::JsonToObjForm(QWidget *parent)
     : QMainWindow(parent)
@@ -52,6 +58,23 @@ void JsonToObjForm::Ok()
     }
 
     //creation of file
+    std::ifstream jsonFile(jsonFilePath);
+    if (!jsonFile.is_open()) {
+        ui->CreationOk->setText("creation failed cant open input file");
+        return;
+    }
+    std::string fullOutputPath = OutObjPath + "/" + ObjName + ".obj";
+
+    std::ofstream outputFile(fullOutputPath);
+    if (!outputFile.is_open()) {
+        ui->CreationOk->setText("creation failed cant open output file");
+        return;
+    }
+
+    JsonToObjLib lib;
+    lib.CreateObj(jsonFile, outputFile);
+    jsonFile.close();
+    outputFile.close();
 }
 
 void JsonToObjForm::Cancel(){
